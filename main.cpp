@@ -118,14 +118,16 @@ int main() {
     cout << "After modifyRobotByValue, Battery Life: " << robot1.getBatteryLife() << "%\n";
 
     // Step 8: Pass by reference (changes persist)
+    modifyRobotBatteryLifeByReference(robot1, 2);
 
-   // cout << "After modifyRobotByReference, Battery Life: " << myRobot.getBatteryLife() << "%\n";
+    cout << "After modifyRobotByReference, Battery Life: " << robot1.getBatteryLife() << "%\n";
 
     // Step 9: Use the Fleet template class
     Fleet<string> myFleet(3);
     myFleet.addRobot("Autobot-X");
     myFleet.addRobot("Cybertron-7");
     myFleet.addRobot("NanoDroid-3");
+    myFleet.addRobot(robot1.getName());
 
     myFleet.showFleet();
 
