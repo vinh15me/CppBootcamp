@@ -12,12 +12,23 @@ private:
 public:
     // Constructor
 
+    Robot(string n, string m, int bL) : name(n), model(m), batteryLife(bL) {}
 
     // Getter Methods
 
+    string getName() {return name;}
+
+    string getModel() {return model;}
+
+    int getBatteryLife() {return batteryLife;}
 
     // Setter Methods
 
+    void setName(string n) {name = n;}
+
+    void setModel(string m) {model = m;}
+
+    void setBatteryLife(int bL) {batteryLife = bL;}
 
     // Display function
     void displayRobot() {
@@ -26,10 +37,31 @@ public:
 };
 
 // Step 2: Function to modify robot (pass by value)
-
-
+void modifyRobotNameByValue(Robot robot, string name) {
+    robot.setName(name);
+    cout << "inside modify robot name by value" << endl;
+}
+void modifyRobotModelByValue(Robot robot, string model) {
+    robot.setModel(model);
+    cout << "inside modify robot model by value" << endl;
+}
+void modifyRobotBatteryLifeByValue(Robot robot, int bL) {
+    robot.setBatteryLife(bL);
+    cout << "inside modify robot battery life by value" << endl;
+}
 // Step 3: Function to modify robot (pass by reference)
-
+void modifyRobotNameByReference(Robot& robot, string name) {
+    robot.setName(name);
+    cout << "inside modify robot name by reference" << endl;
+}
+void modifyRobotModelByReference(Robot& robot, string model) {
+    robot.setModel(model);
+    cout << "inside modify robot model by reference" << endl;
+}
+void modifyRobotBatteryLifeByReference(Robot& robot, int bL) {
+    robot.setBatteryLife(bL);
+    cout << "inside modify robot battery life by reference" << endl;
+}
 
 // Step 4: Template class for a Fleet that stores multiple robots
 template <typename T>
@@ -73,16 +105,17 @@ public:
 
 int main() {
     // Step 5: Create a Robot object
-
-
+    Robot robot1("Joey", "Robot 2405", 3);
 
     // Step 6: Use pointers to access Robot object
+    Robot* robot1Ptr = &robot1;
 
-   // cout << "Updated Battery Life (using pointer): " << robotPtr->getBatteryLife() << "%\n";
+    cout << "Updated Battery Life (using pointer): " << robot1Ptr->getBatteryLife() << "%\n";
 
     // Step 7: Pass by value (no change outside function)
+    modifyRobotBatteryLifeByValue(robot1, 1);
 
-   // cout << "After modifyRobotByValue, Battery Life: " << myRobot.getBatteryLife() << "%\n";
+    cout << "After modifyRobotByValue, Battery Life: " << robot1.getBatteryLife() << "%\n";
 
     // Step 8: Pass by reference (changes persist)
 
